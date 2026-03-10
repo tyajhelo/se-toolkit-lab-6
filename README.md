@@ -68,7 +68,7 @@ In simple words, you should be able to say:
 
 1. [Build the data pipeline](./lab/tasks/required/task-1.md#build-the-data-pipeline)
 2. [Analytics endpoints](./lab/tasks/required/task-2.md#analytics-endpoints)
-3. [Dashboard front-end](./lab/tasks/required/task-3.md#dashboard-front-end)
+3. [Dashboard frontend](./lab/tasks/required/task-3.md#dashboard-frontend)
 
 ### Optional
 
