@@ -77,3 +77,5 @@ query_api for live system facts and data
 It is also important to handle tool-call responses where content is null rather than missing, because many OpenAI-compatible providers return tool calls that way. Another important detail is that the backend URL and credentials must never be hardcoded; the autochecker injects its own values.
 
 Final eval score: not recorded yet in this document. Update this section after uv run run_eval.py passes locally.
+
+Task 1 PR refresh.
