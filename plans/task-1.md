@@ -26,3 +26,5 @@ The CLI program `agent.py` will:
 
 ## Testing
 A regression test will run `agent.py` as a subprocess, parse stdout as JSON, and verify that `answer` and `tool_calls` are present.
+
+Implementation completed and verified on the VM.
