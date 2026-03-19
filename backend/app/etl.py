@@ -131,20 +131,26 @@ async def load_logs(
         title_lookup[key] = item["title"]
 
     created = 0
+    learner_cache: dict[str, Learner] = {}
     for log in logs:
-        # Find or create learner
-        learner = (
-            await session.exec(
-                select(Learner).where(Learner.external_id == str(log["student_id"]))
-            )
-        ).first()
-        if not learner:
-            learner = Learner(
-                external_id=str(log["student_id"]),
-                student_group=log.get("group", ""),
-            )
-            session.add(learner)
-            await session.flush()
+        learner_external_id = str(log["student_id"])
+
+        # Find or create learner with in-memory cache to avoid duplicate inserts in one sync
+        learner = learner_cache.get(learner_external_id)
+        if learner is None:
+            learner = (
+                await session.exec(
+                    select(Learner).where(Learner.external_id == learner_external_id)
+                )
+            ).first()
+            if not learner:
+                learner = Learner(
+                    external_id=learner_external_id,
+                    student_group=log.get("group", "") or "unknown",
+                )
+                session.add(learner)
+                await session.flush()
+            learner_cache[learner_external_id] = learner
 
         # Find item
         title = title_lookup.get((log["lab"], log.get("task")))
