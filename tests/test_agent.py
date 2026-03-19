@@ -53,3 +53,5 @@ def test_item_count_question_uses_query_api():
     data = run_agent("How many items are currently stored in the database?")
     assert "tool_calls" in data
     assert any(call["tool"] == "query_api" for call in data["tool_calls"])
+
+# test update Thu Mar 19 10:11:26 PM MSK 2026
