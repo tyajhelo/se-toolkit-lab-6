@@ -28,3 +28,5 @@ Task 2 output JSON will include:
 Regression tests will verify that:
 - `read_file` is used for wiki lookup questions
 - `list_files` is used for directory listing questions
+
+Documentation Agent workflow update.
